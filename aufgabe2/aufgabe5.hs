@@ -7,18 +7,10 @@ fFibList::Integer->[Integer]
 fFibList 0 = [0]
 fFibList a = [fFibNumber a] ++ fFibList (a-1)
 
--- Dynamic
--- fFibDynamic::Integer->Integer
--- fFibDynamic 0 = 0
--- fFibDynamic 1 = 1
--- fFibDynamic a =
-
-
 -- List version
 fib n = fibs 0 1 !! n
   where
     fibs a b = a : fibs b (a + b)
-
 
 -- Fast doubling
 fDoubling :: Integer -> Integer
