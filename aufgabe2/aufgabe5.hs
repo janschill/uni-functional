@@ -7,6 +7,8 @@ fFibList::Integer->[Integer]
 fFibList 0 = [0]
 fFibList a = [fFibNumber a] ++ fFibList (a-1)
 
+-- Internet Fibonacci calculations
+
 -- List version
 fib n = fibs 0 1 !! n
   where
