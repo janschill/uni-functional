@@ -1,2 +1,2 @@
-funcLowerList::Int->Int->[a]->[a]
-funcLowerList low up list = drop low (take up list)
+f_lower_list::Int->Int->[a]->[a]
+f_lower_list low up list = drop low (take up list)

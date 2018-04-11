@@ -1,28 +1,28 @@
-fFibNumber::Integer->Integer
-fFibNumber 0 = 0
-fFibNumber 1 = 1
-fFibNumber a = fFibNumber(a-1) + fFibNumber(a-2)
+f_fib_number::Integer->Integer
+f_fib_number 0 = 0
+f_fib_number 1 = 1
+f_fib_number a = f_fib_number(a-1) + f_fib_number(a-2)
 
-fFibList::Integer->[Integer]
-fFibList 0 = [0]
-fFibList a = [fFibNumber a] ++ fFibList (a-1)
+f_fib_list::Integer->[Integer]
+f_fib_list 0 = [0]
+f_fib_list a = [f_fib_number a] ++ f_fib_list (a-1)
 
 -- Internet Fibonacci calculations
 
 -- List version
-fib n = fibs 0 1 !! n
+f_fib n = f_fibs 0 1 !! n
   where
-    fibs a b = a : fibs b (a + b)
+    f_fibs a b = a : f_fibs b (a + b)
 
 -- Fast doubling
-fDoubling :: Integer -> Integer
-fDoubling n | n >= 0 = fst (fFib n)
-
-fFib :: Integer -> (Integer, Integer)
-fFib 0 = (0, 1)
-fFib n =
-  let
-    (a, b) = fFib (div n 2)
-    c = a * (b * 2 - a)
-    d = a * a + b * b
-  in if mod n 2 == 0 then (c, d) else (d, c + d)
+f_doubling :: Integer -> Integer
+f_doubling n | n >= 0 = fst (f_fib n)
+    where
+      f_fib :: Integer -> (Integer, Integer)
+      f_fib 0 = (0, 1)
+      f_fib n =
+        let
+          (a, b) = f_fib (div n 2)
+          c = a * (b * 2 - a)
+          d = a * a + b * b
+        in if mod n 2 == 0 then (c, d) else (d, c + d)

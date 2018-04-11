@@ -1,13 +1,13 @@
-funcIsEmpty::[a]->Bool
-funcIsEmpty [] = True
-funcIsEmpty _ = False
+f_is_Empty::[a]->Bool
+f_is_Empty [] = True
+f_is_Empty _ = False
 
-funcTop::[a]->a
-funcTop (firstElement:_) = firstElement
+f_top::[a]->a
+f_top (firstElement:_) = firstElement
 
-funcPush::[a]->a->[a]
-funcPush list element = element:list
+f_push::[a]->a->[a]
+f_push list element = element:list
 
-funcPop::[a]->[a]
-funcPop [] = []
-funcPop (_:restList) = restList
+f_pop::[a]->[a]
+f_pop [] = []
+f_pop (_:restList) = restList
