@@ -1,3 +1,5 @@
+module FP03_1 where
+
 -- Squaresum
 f_rek::Integer->Integer
 f_rek 0 = 0
