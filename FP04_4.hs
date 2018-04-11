@@ -11,3 +11,14 @@ fFak n = iter n 1
 
 fBinom::Integer->Integer->Integer
 fBinom n k = div (fFak n) ((fFak k) * (fFak (n-k)))
+
+fBinomTriangle::Integer->[[Integer]]
+fBinomTriangle a = reverse (fDreieck a)
+  where
+    fDreieck::Integer->[[Integer]]
+    fDreieck 0 = [[1]]
+    fDreieck a = [fPascalRow a a] ++ fDreieck (a-1)
+      where
+        fPascalRow::Integer->Integer->[Integer]
+        fPascalRow _ 0 = [1]
+        fPascalRow a b = [fBinom a b] ++ fPascalRow a (b-1)
