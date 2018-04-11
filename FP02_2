@@ -1,0 +1,16 @@
+Datentypen folgender Ausdrücke:
+
+(Float, Char)
+[(1.3, 'a')]
+
+
+[]
+For an empty list it may seem silly to talk about the types of its elements, since it has no elements. However when you prepend new elements to the empty list it is important what elements are allowed.
+
+E.g. 2 : ([]::String) makes no sense, right?
+Lists can be defined by
+
+data [a] = a : [a] | []
+and you see that one of the constructors (the empty list []) does not use the type parameter a.
+There are types, where none of the constructors refers to the type parameter and these types are very useful, e.g. for defining numbers with type-checked physical dimensions. For details refer to "phantom types".
+https://wiki.haskell.org/Type_of_empty_list

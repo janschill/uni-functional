@@ -1,0 +1,4 @@
+Data types of following terms:
+(<)
+(++[1..10])
+fx=(\x->x+1)x
