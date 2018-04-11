@@ -1,3 +1,5 @@
+module FP03_2 where
+
 fPascal::Int->Int->Integer
 fPascal _ 0 = 1
 fPascal row col | row >= 0 && col >= 0 && row >= col = fPascal (row - 1) (col - 1) + fPascal (row - 1) (col)
