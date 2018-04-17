@@ -19,8 +19,6 @@ f_fib_rek 1 = 1
 f_fib_rek n = f_fib_rek(n-1) + f_fib_rek(n-2)
 
 f_fib_iter::Integer->Integer
-f_fib_iter 0 = 0
-f_fib_iter 1 = 1
 f_fib_iter n = f_iter n 0 1
   where
     f_iter::Integer->Integer->Integer->Integer
