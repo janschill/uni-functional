@@ -26,13 +26,11 @@ f_binom_triangle a = reverse (f_triangle a)
         f_pascal_row _ 0 = [1]
         f_pascal_row a b = [f_binom a b] ++ f_pascal_row a (b-1)
 
-
-
--- iterative calculation of binomial coefficients
--- f_binom_iter::Integer->Integer->Integer
-
 -- recursive calculation of binomial coefficients
 f_binom_rek::Integer->Integer->Integer
 f_binom_rek _ 0 = 1
 f_binom_rek n k | n > 0 && k > 0 && n >= k = f_binom_rek (n-1) (k-1) + f_binom_rek (n-1) k
   | otherwise = 0
+
+-- iterative calculation of binomial coefficients
+-- f_binom_iter::Integer->Integer->Integer
