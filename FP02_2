@@ -1,6 +1,6 @@
 Datentypen folgender Ausdrücke:
 
-(Float, Char)
+[(Float, Char)]
 [(1.3, 'a')]
 
 
