@@ -33,4 +33,10 @@ f_binom_rek n k | n > 0 && k > 0 && n >= k = f_binom_rek (n-1) (k-1) + f_binom_r
   | otherwise = 0
 
 -- iterative calculation of binomial coefficients
--- f_binom_iter::Integer->Integer->Integer
+f_binom_iter::Integer->Integer->Integer
+f_binom_iter _ 0 = 1
+f_binom_iter n k = f_iter n k 0 0
+  where
+    f_iter::Integer->Integer->Integer->Integer->Integer
+    f_iter _ 0 akk1 akk2 = 1 + akk1 + akk2
+    f_iter n k akk1 akk2 = f_iter (n-1) (k-1) akk2 (akk1+akk2+k)
