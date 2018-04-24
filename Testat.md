@@ -1,13 +1,13 @@
 # Testat 1
 
 ## 1 – Data type
-– `[]::[a]`
-– `[1]::(Num a)=>[a]`
-– `[1.2]::(Fractional a)=>[a]`
-– `(<2)::(Num a, Ord a)=>a->Bool` oder `(<2)::Int->Bool`
-– `let f = \x y -> x + y in f 1 2::Num a=>a`
-– `(==)[(1.3,'a')] :: (Fractional a, Eq a) => [(a, Char)] -> Bool`
-– `\x y -> x + y::Num a=>a->a->a`
+* `[]::[a]`
+* `[1]::(Num a)=>[a]`
+* `[1.2]::(Fractional a)=>[a]`
+* `(<2)::(Num a, Ord a)=>a->Bool` oder `(<2)::Int->Bool`
+* `let f = \x y -> x + y in f 1 2::Num a=>a`
+* `(==)[(1.3,'a')] :: (Fractional a, Eq a) => [(a, Char)] -> Bool`
+* `\x y -> x + y::Num a=>a->a->a`
 
 ## 2 – Data type function
 ```
