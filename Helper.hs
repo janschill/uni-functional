@@ -24,3 +24,11 @@ f_fibonacci n | n >= 0 = fst (f_fib n)
           c = a * (b * 2 - a)
           d = a * a + b * b
         in if mod n 2 == 0 then (c, d) else (d, c + d)
+
+f_power::Integer->Integer->Integer
+f_power 0 _ = 1
+f_power power base = f_iter base power 1
+  where
+    f_iter::Integer->Integer->Integer->Integer
+    f_iter n 0 akk = akk
+    f_iter n m akk = f_iter n (m-1) (akk*n)
