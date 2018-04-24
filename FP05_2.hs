@@ -2,20 +2,19 @@ module FP05_2 where
 
 import Helper
 
-{-
-fibo =
-  sum(takeWhile (< 4000000) fibo)
--}
-
+{- Calculates the sum the first 4,000,000 fibonacci numbers -}
 f_fib_sum2::Integer
 f_fib_sum2 = foldr (+) 0 (takeWhile (< four) (f_fibonacci_inf))
 
+{- generates an infinite list of fibonacci numbers -}
 f_fibonacci_inf::[Integer]
 f_fibonacci_inf = fib_inf 1
   where
     fib_inf::Integer->[Integer]
     fib_inf n = [f_fibonacci n] ++ fib_inf (n+1)
 
+{- second way of calculating the sum of the first 4,000,000 -}
+{- returns a list to the nth fibonacci number -}
 f_fibonacci_list::Integer->[Integer]
 f_fibonacci_list n = reverse (f_fib_list n)
   where
