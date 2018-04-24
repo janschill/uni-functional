@@ -8,9 +8,13 @@ fibo =
 -}
 
 f_fib_sum2::Integer
-f_fib_sum2 = foldr (+) 0 (takeWhile (< four) (f_fibonacci_list 1000))
+f_fib_sum2 = foldr (+) 0 (takeWhile (< four) (f_fibonacci_inf))
 
--- fibonacciSum = foldr (+) 0 [1..5]
+f_fibonacci_inf::[Integer]
+f_fibonacci_inf = fib_inf 1
+  where
+    fib_inf::Integer->[Integer]
+    fib_inf n = [f_fibonacci n] ++ fib_inf (n+1)
 
 f_fibonacci_list::Integer->[Integer]
 f_fibonacci_list n = reverse (f_fib_list n)
