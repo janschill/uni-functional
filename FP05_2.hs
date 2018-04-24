@@ -1,6 +1,16 @@
+module FP05_2 where
+
 import Helper
 
-fibonacciSum = foldr (+) 0 [1..5]
+{-
+fibo =
+  sum(takeWhile (< 4000000) fibo)
+-}
+
+f_fib_sum2::Integer
+f_fib_sum2 = foldr (+) 0 (takeWhile (< four) (f_fibonacci_list 1000))
+
+-- fibonacciSum = foldr (+) 0 [1..5]
 
 f_fibonacci_list::Integer->[Integer]
 f_fibonacci_list n = reverse (f_fib_list n)
