@@ -9,6 +9,6 @@ f_sum_digit_sum::Integer
 f_sum_digit_sum =
   let
     num2List = map (digitToInt) (show powerNumber)
-    solution = toInteger $ foldl (+) 0 num2List
+    sumList = toInteger $ foldl (+) 0 num2List
   in
-    solution
+    sumList
