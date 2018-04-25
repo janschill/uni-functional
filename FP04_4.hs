@@ -8,7 +8,7 @@ f_fak n = iter n 1
     iter 0 akk = akk
     iter n akk = iter (n-1) (n*akk)
 
--- calculation of binomial coefficients
+-- faculty calculation of binomial coefficients
 f_binom::Integer->Integer->Integer
 f_binom _ 0 = 1
 f_binom n k | n > 0 && k > 0 && n >= k = div (f_fak n) ((f_fak k) * (f_fak (n-k)))
