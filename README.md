@@ -39,7 +39,6 @@ eg.
 - variables
 - functions
 
-
 ### body
 
 - constants
@@ -48,27 +47,46 @@ eg.
 - case analysis
 - mathematical operations
 
-### operator
+### operators
 
-- `-`
-- `+`
-- `/`
-- `mod`
-- `^`
-- `<`
-- `>`
-- `<=`
-- `>=`
-- `==`
-- `/=`
-- `&&`
-- `||`
-- `not`
+- `-` subtraction
+- `+` addition
+- `/` division
+- `mod` modulo
+- `^` exponent
+- `<` smaller than
+- `>` greater than
+- `<=` smaller equal than
+- `>=` greater equal than
+- `==` equal
+- `/=` not equal
+- `&&` and
+- `||` or
+- `not` not
 
 ## local functions
 
 - `where`
+
+eg.
+
+```haskell
+f x y = x + f' y
+  where
+    f' n = n + n
+```
+
 - `let in`
+
+```haskell
+f x y =
+  let
+    f' n = n + n
+  in
+    x + f' y
+```
+
+## multiple conditions (guards)
 
 ## typeless, strict
 
