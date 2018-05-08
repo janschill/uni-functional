@@ -1,3 +1,5 @@
+module FP02_3 where
+
 f_is_Empty::[a]->Bool
 f_is_Empty [] = True
 f_is_Empty _ = False
