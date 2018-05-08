@@ -33,7 +33,7 @@ f_insertion_sort list =
   let
     f_sort::[Integer]->[Integer]->[Integer]
     f_sort l [] = l
-    f_sort (xs) (y:ys) = f_sort (f_insert xs y) ys
+    f_sort xs (y:ys) = f_sort (f_insert xs y) ys
       where
         f_insert::[Integer]->Integer->[Integer]
         f_insert [] y = [y]
