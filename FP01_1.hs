@@ -1,3 +1,5 @@
+module FP01_1 where
+
 -- calculates the median of the range of two numbers
 
 f_median::(Fractional a, Ord a)=>a->a->a
