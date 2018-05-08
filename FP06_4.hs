@@ -3,6 +3,7 @@ module FP06_4 where
 import FP06_3
 
 d_str = "Dies ist ein ein Beispielsatz . . ."
+d_str2 = "ha ha he hu"
 
 f_wordList::String->[(String, Int)]
 f_wordList str =
