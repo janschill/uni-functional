@@ -1,4 +1,6 @@
--- This program calculates the number of bonbons you can buy with the money you enter as a parameter in `user 155`
+module FP01_3 where
+
+  -- This program calculates the number of bonbons you can buy with the money you enter as a parameter in `user 155`
 
 -- user function sets counter and bonbon price to prevent cheating
 f_user::(Num a, Ord a)=>a->a
