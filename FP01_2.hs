@@ -1,3 +1,5 @@
+module FP01_2 where
+
 -- calculates the cross total of entered number
 f_quer::(Integral a, Ord a)=>a->a
 f_quer x | x < 10 = x
