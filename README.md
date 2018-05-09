@@ -156,7 +156,7 @@ arity {arity = 2 pair, arity = 3 triple, arity = 1 not possible}
 ## pattern matching
 
 ```haskell
-f::T1->T2->Tn-Treturn
+f::T1->T2->Tn->Treturn
 f p1 p2 pn = expression1
 f q1 q2 qn = expression2
 f r1 r2 rn = expressionn
@@ -338,16 +338,51 @@ mapList (\x -> x*2) [1,2,3]
 
 ## polymorphism
 
+## list comprehension
+
+```haskell
+natural = [1,2,3]
+        = [x | x <- [1..]]
+
+squares = [1,4,9,16]
+        = [x^2 | x <- [1..]]
+```
+
+[Expression | Generators]
+
+- there can be multiple generators
+- left associative
+- variables of expression are bound to a value through a generator
+
+_eg._
+
+```haskell
+[(x,y) | x <- [1,2,3], y <-[4,5]
+
+[(1,4), (1,5), (2,4), (2,5), (3,4), (3,5)]
+```
+
+List comprehension can also take logical expressions
+
+[Expression | Generators, Logical expression]
+
+Generator:
+
+- pattern <- expression
+- local definition with _let_ (without _in_)
+
 ## example programs
 
-### sum of all numbers between a given range
+### 1.recusion
+
+#### sum of all numbers between a given range
 
 ```haskell
 sum x y | x <= y = x + sum (x+1) y
         | otherwise = 0
 ```
 
-### concat first element of tupel to list
+#### concat first element of tupel to list
 
 ```haskell
 f::(Int, Int)->[Int]->[Int]
@@ -355,7 +390,7 @@ f (x,y) list = x : list
 
 ```
 
-### length of list function
+#### length of list function
 
 ```haskell
 f::[a]->Int
@@ -363,7 +398,9 @@ f [] = 0
 f (_:xs) = 1 + f xs
 ```
 
-### iterative implementation of length function
+### 2.iterative-recursion
+
+#### implementation of length function
 
 ```haskell
 length'::[a]->Int
@@ -374,7 +411,9 @@ length' l = iter l 0
     iter (x:xs) akk = iter xs (akk+1)
 ```
 
-### filter a list
+### 3.higher-order-functions
+
+#### filter a list
 
 ```haskell
 filterList::(Int->Bool)->[Int]->[Int]
@@ -383,7 +422,7 @@ filterList f (x:xs) | f x = x : filterList f xs
                     | otherwise = filterList f xs
 ```
 
-### quicksort
+#### quicksort
 
 ```haskell
 quicksort::[Int]->[Int]
@@ -394,3 +433,37 @@ quicksort (x:xs) = quicksort smaller ++ [x] ++ quicksort larger
     larger  = filterList (>x) xs
 ```
 
+### 4.list-comprehension
+
+#### list all pairs of [1,2,3]
+
+```haskell
+[(x,y) | x <-[1,2,3], y <-[x..3]]
+```
+
+#### define the concat function (f::[[a]]->[a])
+
+```haskell
+f::[[a]]->[a]
+f lists = [x | list <- lists, x <- lists]
+```
+
+#### even numbers smaller than 100
+
+```haskell
+l::[Int]
+l = [x | x <- [1..99], mod x 2 == 0]
+```
+
+#### prime numbers
+
+```haskell
+primeNumber::Int->[Int]
+primeNumber n = [x | x <- [2..n], isPrime x]
+
+isPrime::Int->Bool
+isPrime n = factors n == [1,n]
+
+factors::Int->[Int]
+factors n = [x | x <- [1..n], mod n x == 0]
+```
