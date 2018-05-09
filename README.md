@@ -3,8 +3,8 @@
 Functional programming with Haskell for university class
 
 1. [pros and cons](#pros and cons)
-  1. [pro](#pro)
-  2. [con](#con)
+    1. [pro](#pro)
+    2. [con](#con)
 2. [syntax](syntax)
 
 ## pros and cons
@@ -136,13 +136,13 @@ _use_ `:t name` _to ask compiler for type_
 ### lists
 
 1. comma seperated
-  - `[1,2,3]` or `[1..3]`
-  - `[[1,2],[3]]`
-  - `['t', 'e', 's', 't']`
+   - `[1,2,3]` or `[1..3]`
+   - `[[1,2],[3]]`
+   - `['t', 'e', 's', 't']`
 2. first element : rest of list
-  - `1:[2,3]`
-  - `1:2:[3]`
-  - `1:2:3:[]`
+   - `1:[2,3]`
+   - `1:2:[3]`
+   - `1:2:3:[]`
 
 ### tupel
 
