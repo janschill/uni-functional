@@ -28,10 +28,11 @@ Functional programming with Haskell for university class
 - allowed symbols: _ and '
 
 _eg._
-`func x = x + 1`
-`fun' x = x + 2`
-`fun_ x = x + 3`
-`fun1 x = x + 4`
+
+- `func x = x + 1`
+- `fun' x = x + 2`
+- `fun_ x = x + 3`
+- `fun1 x = x + 4`
 
 ### parameters
 
