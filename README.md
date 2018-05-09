@@ -99,18 +99,20 @@ f p1 p2 … pn | condition1 = expression1
 
 ### standard types
 
-- `Bool` `True`, `False`
-- `Char` `'a'`, `'1'`
-- `Int` 4 Byte
-- `Integer` _unlimited_
-- `Float`
-- `Double` double precision
-- `String` `"abs"` list of Chars
+- `Bool`: `True`, `False`
+- `Char`: `'a'`, `'1'`
+- `Int`: 4 Byte
+- `Integer`: _unlimited_
+- `Float`:
+- `Double`: double precision
+- `String`: `"abs"` list of Chars
 
 ### type annotation
 
+#### Figure 1: Predefined Type Classes in Haskell
+
 ![Haskell Type Classes](https://www.haskell.org/onlinereport/classes.gif)
-_Figure 1: Predefined Type Classes in Haskell_
+
 _Source:_ [Haskell.org](https://www.haskell.org/onlinereport/basic.html)
 
 _eg._
