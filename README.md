@@ -38,6 +38,8 @@ _eg._
 - constants
 - variables
 - functions
+- lists
+- tupel
 
 ### body
 
@@ -122,6 +124,18 @@ add::(Num a)=>a->a->a
 ```
 
 _use_ `:t name` _to ask compiler for type_
+
+## lists
+
+1. Comma seperated
+  - `[1,2,3]` or `[1..3]`
+  - `[[1,2],[3]]`
+  - `['t', 'e', 's', 't']`
+2. first element : rest of list
+  - `1:[2,3]`
+  - `1:2:[3]`
+  - `1:2:3,[]`
+
 
 ## lazy evaluation
 
