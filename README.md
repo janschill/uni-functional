@@ -2,6 +2,11 @@
 
 Functional programming with Haskell for university class
 
+1. [pros and cons](#pros and cons)
+  1. [pro](#pro)
+  2. [con](#con)
+2. [syntax](syntax)
+
 ## pros and cons
 
 ### pro
@@ -341,7 +346,7 @@ mapList (\x -> x*2) [1,2,3]
 ## list comprehension
 
 ```haskell
-natural = [1,2,3]
+natural = [1,2,3,..]
         = [x | x <- [1..]]
 
 squares = [1,4,9,16]
