@@ -88,7 +88,28 @@ f x y =
 
 ## multiple conditions (guards)
 
-## typeless, strict
+```haskell
+f p1 p2 … pn | condition1 = expression1
+             | condition2 = expression2
+             | conditionn = expressionn
+             | otherwise  = expression
+```
+
+## type
+
+### standard types
+
+- `Bool` `True`, `False`
+- `Char` `'a'`, `'1'`
+- `Int` 4 Byte
+- `Integer` _unlimited_
+- `Float`
+- `Double` double precision
+- `String` `"abs"` list of Chars
+
+### type annotation
+
+![Haskell Type Classes](https://www.haskell.org/onlinereport/classes.gif)
 
 ## lazy evaluation
 
@@ -97,3 +118,12 @@ f x y =
 ## partial application
 
 ## polymorphism
+
+## example programs
+
+### sum of all numbers between a given range
+
+```haskell
+sum x y | x <= y = x + sum (x+1) y
+        | otherwise = 0
+```
