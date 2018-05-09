@@ -27,7 +27,7 @@ Functional programming with Haskell for university class
 - has to start with lower case letter
 - allowed symbols: _ and '
 
-eg.
+_eg._
 `func x = x + 1`
 `fun' x = x + 2`
 `fun_ x = x + 3`
@@ -68,7 +68,7 @@ eg.
 
 - `where`
 
-eg.
+_eg._
 
 ```haskell
 f x y = x + f' y
@@ -110,6 +110,16 @@ f p1 p2 … pn | condition1 = expression1
 ### type annotation
 
 ![Haskell Type Classes](https://www.haskell.org/onlinereport/classes.gif)
+_Figure 1: Predefined Type Classes in Haskell_
+_Source:_ [Haskell.org](https://www.haskell.org/onlinereport/basic.html)
+
+_eg._
+
+```haskell
+add::(Num a)=>a->a->a
+```
+
+_use_ `:t name` _to ask compiler for type_
 
 ## lazy evaluation
 
