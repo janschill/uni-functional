@@ -2,7 +2,7 @@
 
 Functional programming with Haskell for university class
 
-1. [pros and cons](#pros and cons)
+1. [pros and cons](#pros-and-cons)
     1. [pro](#pro)
     2. [con](#con)
 2. [syntax](syntax)
