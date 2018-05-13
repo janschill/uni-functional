@@ -40,7 +40,7 @@ Functional programming with Haskell for university class
 12. [lambda-(anonymous-function)](#lambda-(anonymous-function))
 13. [polymorphism](#polymorphism)
 14. [list-comprehension](#list-comprehension)
-15. [example-programs`](#example-programs)
+15. [example-programs](#example-programs)
 
 ## pros and cons
 
@@ -485,7 +485,7 @@ quicksort (x:xs) = quicksort smaller ++ [x] ++ quicksort larger
 
 ```haskell
 f::[[a]]->[a]
-f lists = [x | list <- lists, x <- lists]
+f lists = [x | list <- lists, x <- list]
 ```
 
 #### even numbers smaller than 100
