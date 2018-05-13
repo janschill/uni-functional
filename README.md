@@ -174,7 +174,7 @@ _use_ `:t name` _to ask compiler for type_
    - `[1,2,3]` or `[1..3]`
    - `[[1,2],[3]]`
    - `['t', 'e', 's', 't']`
-2. first element : rest of list
+2. _first element : rest of list_
    - `1:[2,3]`
    - `1:2:[3]`
    - `1:2:3:[]`
