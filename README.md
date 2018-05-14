@@ -440,6 +440,8 @@ f (_:xs) = 1 + f xs
 
 ### 2.iterative-recursion
 
+tail recursive
+
 #### implementation of length function
 
 ```haskell
