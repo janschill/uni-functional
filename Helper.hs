@@ -32,3 +32,17 @@ f_power power base = f_iter base power 1
     f_iter::Integer->Integer->Integer->Integer
     f_iter n 0 akk = akk
     f_iter n m akk = f_iter n (m-1) (akk*n)
+
+f_sum::Integer->Integer
+f_sum n = div (n*(n+1)) 2
+
+f_sum'::Integer->Integer
+f_sum' n = f_add_sum 0 n
+ where
+  f_add_sum::Integer->Integer->Integer
+  f_add_sum m 0 = m
+  f_add_sum m n = f_add_sum (m+n) (n-1)
+
+f_sum''::Integer->Integer
+f_sum'' 0 = 0
+f_sum'' n = n + f_sum''(n-1)
