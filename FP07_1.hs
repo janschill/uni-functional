@@ -1,4 +1,4 @@
-module FP08_1 where
+module FP07_1 where
 
 -- list_a::[[Int]]
 list lists = [x | list <- lists, x <- list]
