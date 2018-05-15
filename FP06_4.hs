@@ -20,11 +20,13 @@ f_wordList str =
     f_count::String->[String]->Int
     f_count word = length . filter (word==)
 
-    f_word::[String]->[(String, Int)]
-    f_word [] = []
-    f_word (x:xs) = [(x, f_count x d_wordList)] ++ f_word xs
+    {- alternative -}
+    -- f_word::[String]->[(String, Int)]
+    -- f_word [] = []
+    -- f_word (x:xs) = [(x, f_count x d_wordList)] ++ f_word xs
 
     f_word'::[String]->[(String, Int)]
+    f_word' [] = []
     f_word' (x:xs) = foldr (\x xs -> [(x, f_count x d_wordList)] ++ xs) [] (d_filteredList)
   in
     f_word' d_filteredList
