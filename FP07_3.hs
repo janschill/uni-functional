@@ -1,4 +1,4 @@
-module FP07_1 where
+module FP07_3 where
 
 {-
 use list comprehension to implement map and filter function
