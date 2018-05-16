@@ -10,5 +10,9 @@ map'::(a->b)->[a]->[b]
 map' _ [] = []
 map' f (x:xs) = f x : map' f [n | n <- xs]
 
+map''::(a->b)->[a]->[b]
+map'' _ [] = []
+map'' f xxs = [f x | x <- xxs]
+
 filter'::(a->Bool)->[a]->[a]
 filter' f xs = [n | n <- xs, f n]
