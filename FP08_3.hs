@@ -23,6 +23,7 @@ f_power_iter base power = f_iter base power 1
         (x * x)
       | otherwise = f_iter base (power-1) (akk*base)
 
+
 {-
 > f_power 2 2
 
