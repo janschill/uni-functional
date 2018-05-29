@@ -15,4 +15,4 @@ map'' _ [] = []
 map'' f xxs = [f x | x <- xxs]
 
 filter'::(a->Bool)->[a]->[a]
-filter' f xs = [n | n <- xs, f n]
+filter' f xxs = [n | n <- xxs, f n]
