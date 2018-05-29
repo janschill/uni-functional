@@ -411,6 +411,204 @@ Generator:
 - pattern <- expression
 - local definition with _let_ (without _in_)
 
+## evaluation
+
+`f p1 p2 … pn = body (expression)`
+
+- at function call parameters get bound to arguments
+- replaces function call with right side of equation
+
+### strategies
+
+1. call-by-value (inside to outside, most imperative languages)
+    - before function gets applied, all arguments have to be evaluated
+
+_eg._
+`f(2+5)` -> `f 7`
+
+2. call-by-name (outside to inside, most functional languages)
+    - before arguments are evaluated, function gets applied
+    - if arguments need to be evaluated, the get evaluated after (lazy loading)
+
+_eg._
+
+1. multiplication
+
+```haskell
+mult::(Int, Int)->Int
+mult (x,y) = x * y
+```
+
+*call-by-value:*
+
+```haskell
+> mult (1+2, 3+4)
+= mult (3, 3+4)
+= mult (3, 7)
+= 3 * 7
+= 21
+```
+
+*call-by-name:*
+
+```haskell
+> mult (1+2, 3+4)
+= (1+2) * (3+4)
+= 3 * (3+4)
+= 3 * 7
+= 21
+```
+
+2. infinity
+
+```haskell
+infinity::[Int]
+infinity 1 : infinity
+```
+
+*call-by-value:*
+
+```haskell
+> head infinity
+= head (1:infinity)
+= head (1:1:infinity)
+= …
+```
+
+*call-by-name:*
+
+```haskell
+> head infinity
+= head (1:infinity)
+= 1
+```
+
+3. lambda calculation
+
+*call-by-value:*
+
+```haskell
+> (\x -> mult x x) (1+2)
+= (\x -> mult x x) 3
+= mult 3 3
+= 3 * 3
+= 9
+```
+
+*call-by-name:*
+
+```haskell
+> (\x -> mult x x) (1+2)
+= mult (1+2) (1+2)
+= (1+2) * (1+2)
+= 3 * (1+2)
+= 3 * 3
+= 9
+```
+
+*drawback* for _call-by-name_ x gets evaluated a second time, even though in theory we already know the solution
+
+### sharing
+
+compiler checks at argument binding for repeated calls and creates pointer to physical memory
+
+_eg._
+
+```haskell
+> (\x -> mult x x) (1+2)
+= mult . . {1+2}
+= . * . {1+2}
+= . * . {3}
+= 9
+```
+
+_call-by-name_ + _sharing_ = _call-by-need_
+
+## types and data
+
+### type declaration
+
+- new name (only for readability)
+- can have parameters
+- cannot be recursively declared
+- name begins with capitalized letter
+
+_eg._
+
+```haskell
+f::[Int]->[Int]
+
+type Numbers = [Int]
+
+f::Numbers->Numbers
+```
+
+```haskell
+f::(a,b)->a
+
+type Paar a b = (a,b)
+
+f::(Paar a b)->a
+```
+
+### data declaration
+
+- a whole new type with corresponding values
+- can have parameters
+- can be recursively
+- name begins with capitalized letter
+
+_eg._
+```haskell
+data Bool = True | False
+
+data Month = Jan | Feb | Mar | … | Dec
+```
+
+#### constructor
+
+- name begins with capitalized letter
+- without parameters called _value constructor_
+- with parameters called _function constructor_
+- usuage as: pattern argument, return
+- same constructor names cannot be defined in one module
+
+_eg._
+
+```haskell
+data Form = Circle Double | Rectanle Double Double
+
+f::Form->Double
+f (Circle r) = pi * r ^ 2
+f (Rectangle l w) = l * w
+```
+
+```haskell
+>:t Circle
+= Circle::Double->Form
+```
+
+#### type maybe
+
+```haskell
+data Maybe a = Just a | Nothing
+```
+
+checks if a calculation was successful or not
+
+_eg._
+
+```haskell
+divide::Int->Int->Maybe Int
+divide n 0 = Nothing
+divide n m = Just (div n m)
+
+divPossible::Int->Int->Bool
+divPossible n m = case (divide n m) of
+                Just _ = True
+                Nothing = False
+```
+
 ## example programs
 
 ### 1.recusion
@@ -508,4 +706,59 @@ isPrime n = factors n == [1,n]
 
 factors::Int->[Int]
 factors n = [x | x <- [1..n], mod n x == 0]
+```
+
+### 5.evaluation
+
+```haskell
+f x = x + x
+g x = 2 * x
+```
+
+*call-by-value*
+
+```haskell
+> f (g 3)
+= f (2 * 3)
+= f 6
+= 6 + 6
+= 12
+```
+
+*call-by-name*
+
+```haskell
+> f (g 3)
+= (g 3) + (g 3)
+= (2 + 3) + (g 3)
+= (2 + 3) + (2 + 3)
+= 6 + (2 + 3)
+= 6 + 6
+= 12
+```
+
+*call-by-need*
+
+```haskell
+> f (g 3)
+= . + . {g 3}
+= . + . {2*3}
+= . + . {6}
+= 12
+```
+
+### 6.types
+
+#### data type list
+
+```haskell
+data List a = Nil | Cons a (List a)
+```
+
+#### length of data list
+
+```haskell
+f::List->Int
+f Nil = 0
+f (Cons a l) = 1 + f l
 ```
