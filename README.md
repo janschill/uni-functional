@@ -616,11 +616,98 @@ data Either a b = Left a | Right b
 ```
 
 _eg._
+
 ```haskell
 divide n 0 = Left "0 division"
 divide n m = Right (div n m)
 ```
 
+## classes
+
+```haskell
+class classname type where
+    function type
+    function implementation
+```
+
+_eg._
+
+```haskell
+class Eq a where
+    (==)::a->a->Bool
+    (/=)::a->a->Bool
+```
+
+`Eq a` means, that for the type `a` as an instance of class `Eq` the functions: `(==)` and `(/=)` are available. `a` is a type that gets generated using the keyword `data`.
+
+### instantiate
+
+The type variable `a` gets replaced by a definite type
+
+```haskell
+instance classname type where
+    implementation
+```
+
+_eg._
+
+```haskell
+data Month = Jan | Feb | Dec
+
+instance Eq Month where
+    (==) Jan Jan = True
+    (==) Feb Feb = True
+    (==) Dec Dec = True
+
+    (/=) X Y = not((==) X Y)
+
+instance Show Month where
+    show Jan = "Jan"
+    show Feb = "Feb"
+    show Dec = "Dec"
+    show _ = "Kein Monat"
+```
+
+```haskell
+data Tree = Empty | Node Tree Weekday Tree
+data Weekday = Mo | Tu | Su
+
+instance Eq Tree where
+    (==) Empty Empty = True
+    (==) (Node l1 v1 r1) (Node l2 v2 r2) = l1 == l2 && r1 == r2 && v1 == v2
+    (==) _ _ = False
+
+instance Eq Weekday where
+    (==) Mo Mo = True
+    (==) Tu Tu = True
+    (==) Su Su = True
+    (==) _ _ = False
+
+    (/=) X Y = not((==) X Y)
+```
+
+#### instatiate data types with parameters
+
+```haskell
+data Tree a = Empty | Node (Tree a) a (Tree a)
+
+instance Eq a => Eq (Tree a) where
+    (==) Empty Empty = True
+    (==) (Node l1 v1 r1) (Node l2 v2 r2) = l1 == l2 && r1 == r2 && v1 == v2
+    (==) _ _ = False
+```
+
+### inheritance
+
+1. automatic inheritance
+    `deriving (class1, class2)`
+    no overwriting possible
+1. instantiate by hand
+    `class` `instance`
+1. restricted polymorphism
+    `=>`
+
+<!-- --------------- EXAMPLE PROGRAMS --------------- -->
 
 ## example programs
 
@@ -774,4 +861,24 @@ data List a = Nil | Cons a (List a)
 f::List->Int
 f Nil = 0
 f (Cons a l) = 1 + f l
+```
+
+### 7.classes
+
+#### convert data type to list
+
+```haskell
+class ListBuilder a where
+    toIntList::a->[Int]
+
+instance ListBuilder a => ListBuilder (Tree a) where
+    toIntList Empty = []
+    toInstList (Node l1 v1 r1) = (toIntList l1) ++ (toIntList v1) ++ (toIntList r1)
+
+instance ListBuilder Int where
+    toIntList x = [x]
+
+instance ListBuilder Bool where
+    toIntList True = [1]
+    toIntList False = [0]
 ```
