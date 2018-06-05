@@ -1,45 +1,53 @@
 module FP09_3 where
 
-data Node a = Nothing | Cons a (Node a)
-data Node a = Node
-    { label    :: a
-    , adjacent :: [Node a]
-    }
-
-data Graph a = Graph [Node a]
 {-
-Queue
-constructors:
-head
-tail
-
-functions:
-isEmpty
-add
-remove
+Queue implemented with a list
 -}
-data Queue
+type Queue a = [a]
+
+queue1 = [1,2,3,4]
+queue2 = enqueue queue1 5
+queue3 = dequeue queue2
+
+enqueue::(Queue a)->a->(Queue a)
+enqueue queue v = queue ++ [v]
+
+dequeue::(Queue a)->(Queue a)
+dequeue (q:qs) = qs
+
+queuePeek::(Queue a)->a
+queuePeek (x:_) = x
+
+queueEmpty::(Queue a)->Bool
+queueEmpty (x:_) = False
+queueEmpty _ = True
+
+queueSize::(Queue a)->Int
+queueSize [] = 0
+queueSize (_:xs) = 1 + queueSize xs
 
 {-
-Stack
-constructors:
-
-functions:
-isEmpty
-push
-pop
+Stack implemented with a list
 -}
 type Stack a = [a]
 
 stack1 = [1,2,3,4]
-stack2 = f_stack_push stack1 0
-stack3 = f_tuple_scnd $ f_stack_pop stack2
+stack2 = push stack1 0
+stack3 = pop stack2
 
-f_tuple_scnd::(a,b)->b
-f_tuple_scnd (_,b) = b
+push::(Stack a)->a->(Stack a)
+push stack v = v:stack
 
-f_stack_pop::(Stack a)->(a, Stack a)
-f_stack_pop (x:xs) = (x, xs)
+pop::(Stack a)->(Stack a)
+pop (x:xs) = xs
 
-f_stack_push::(Stack a)->a->(Stack a)
-f_stack_push stack value = value:stack
+stackPeek::(Stack a)->a
+stackPeek (x:_) = x
+
+stackEmpty::(Stack a)->Bool
+stackEmpty (x:_) = False
+stackEmpty _ = True
+
+stackSize::(Stack a)->Int
+stackSize [] = 0
+stackSize (_:xs) = 1 + stackSize xs
