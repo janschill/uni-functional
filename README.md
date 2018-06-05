@@ -609,6 +609,19 @@ divPossible n m = case (divide n m) of
                 Nothing = False
 ```
 
+a function with two different return types
+
+```haskell
+data Either a b = Left a | Right b
+```
+
+_eg._
+```haskell
+divide n 0 = Left "0 division"
+divide n m = Right (div n m)
+```
+
+
 ## example programs
 
 ### 1.recusion
