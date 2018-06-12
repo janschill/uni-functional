@@ -1,15 +1,18 @@
 module FP02_3 where
 
-f_is_Empty::[a]->Bool
-f_is_Empty [] = True
-f_is_Empty _ = False
+type (Stack a) = [a]
 
-f_top::[a]->a
-f_top (firstElement:_) = firstElement
+isEmpty::(Stack a)->Bool
+isEmpty [] = True
+isEmpty _ = False
 
-f_push::[a]->a->[a]
-f_push list element = element:list
+push::a->(Stack a)->(Stack a)
+push element stack = element:stack
 
-f_pop::[a]->[a]
-f_pop [] = []
-f_pop (_:restList) = restList
+top::(Stack a)->a
+top [] = error "no element in stack"
+top (s:_) = s
+
+pop::(Stack a)->(Stack a)
+pop [] = []
+pop (_:ss) = ss
