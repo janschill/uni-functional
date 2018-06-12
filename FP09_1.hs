@@ -2,7 +2,7 @@ module FP09_1 where
 
 import FP08
 
-d_tree3 = convertListToBinaryTree d_list
+d_tree3 = convertListToBinaryTree list
 sum_tree3 = f_sum_binary_tree d_tree3
 
 {-
