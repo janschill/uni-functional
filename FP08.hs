@@ -17,12 +17,10 @@ btree1 = Node (Node (Node Empty 31 Empty) 21 (Node Empty 32 Empty)) 11 (Node (No
 data BinaryTree a =
   Empty
   | Node (BinaryTree a) a (BinaryTree a)
-  deriving (Eq)
 
 data Tree a =
     Empty'
   | Node' a [Tree a]
-  deriving (Eq)
 
 {-
 checks if a binary tree contains an element
@@ -76,7 +74,7 @@ sorts a list into a binary tree
 list = [8,2,1,5,3,10,6,7,11,4,9]
 tree = Node (Node (Node Empty 1 Empty) 2 (Node Empty 5 Empty)) 8 Empty
 tree2 = convertListToBinaryTree random1000
-list2 = f_convert_sort tree2
+list2 = convertBinaryToSortedList tree2
 
 singleton::(Ord a)=>a->(BinaryTree a)
 singleton value = Node Empty value Empty
