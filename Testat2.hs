@@ -9,6 +9,13 @@ f_concatenate::[[Int]]->[Int]
 f_concatenate [] = []
 f_concatenate (x:xs) = x ++ f_concatenate xs
 
+f_concatenate_it::[[Int]]->[Int]
+f_concatenate_it list = aux [] list
+  where
+    aux::[Int]->[[Int]]->[Int]
+    aux list [] = list
+    aux list (x:xs) = aux (list ++ x) xs
+
 {-
 concat function using list comprehension
 -}
