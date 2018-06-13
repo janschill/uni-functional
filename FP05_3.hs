@@ -40,3 +40,14 @@ f_insertion_sort list =
         f_insert (x:xs) y = if y <= x then y:x:xs else x : f_insert xs y
   in
     f_sort [] list
+
+{-
+different approach
+-}
+insertionSort::(Ord a)=>[a]->[a]
+insertionSort list = aux list []
+  where
+    aux::(Ord a)=>[a]->[a]->[a]
+    aux [] sorted = sorted
+    aux (l:ls) [] = aux ls [l]
+    aux (l:ls) sorted = aux ls ((filter (<=l) sorted) ++ [l] ++ (filter (>l) sorted))
