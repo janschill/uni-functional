@@ -24,9 +24,31 @@ f_wordList str =
     -- f_word::[String]->[(String, Int)]
     -- f_word [] = []
     -- f_word (x:xs) = [(x, f_count x d_wordList)] ++ f_word xs
+    {- ----------- -}
 
     f_word'::[String]->[(String, Int)]
     f_word' [] = []
-    f_word' (x:xs) = foldr (\x xs -> [(x, f_count x d_wordList)] ++ xs) [] (d_filteredList)
+    f_word' (x:xs) = foldr (\x xs -> (x, f_count x d_wordList):xs) [] (d_filteredList)
   in
     f_word' d_filteredList
+
+wortListe::String->[(String, Int)]
+wortListe string =
+  let
+    stringParsed = words string
+    wordsFiltered = filterRepetition stringParsed
+
+    f_count::String->[String]->(String,Int)
+    f_count word list = (word, length $ filter (word==) list)
+
+    {- alternative inefficient -}
+    count::String->(String, Int)
+    count a = (a,(aux a stringParsed 0))
+      where
+        aux::String->[String]->Int->Int
+        aux _ [] akk = akk
+        aux a (x:xs) akk | a == x = aux a xs (akk+1)
+                         | otherwise = aux a xs akk
+    {- ----------------------- -}
+  in
+    foldr (\a b -> (f_count a stringParsed):b) [] wordsFiltered
