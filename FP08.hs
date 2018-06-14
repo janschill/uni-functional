@@ -71,11 +71,12 @@ sorts a list into a binary tree
 1   5
 -}
 
-list = [8,2,1,5,3,10,6,7,11,4,9]
+list = [8,2,1,5,3,10,6,7,11,4,9,13,21,44,12,55,51,29,37]
 tree = Node (Node (Node Empty 1 Empty) 2 (Node Empty 5 Empty)) 8 Empty
 tree2 = convertListToBinaryTree random1000
 list2 = convertBinaryToSortedList tree2
 
+{- -------------- sort list into binary tree -------------- -}
 singleton::(Ord a)=>a->(BinaryTree a)
 singleton value = Node Empty value Empty
 
@@ -91,10 +92,15 @@ convertListToBinaryTree xxs = f_list xxs Empty
     f_list::(Ord a)=>[a]->(BinaryTree a)->(BinaryTree a)
     f_list [] tree = tree
     f_list (x:xs) tree = f_list xs (insertValueIntoBinaryTree x tree)
+{- -------------------------------------------------------- -}
 
-{-
-converts a binary tree into an ordered list
--}
+{- way shorter and less complicated implementation of above code -}
+sortBinaryTree::(Ord a)=>[a]->(BinaryTree a)
+sortBinaryTree [] = Empty
+sortBinaryTree (x:xs) = Node (sortBinaryTree (filter (x>=) xs)) x (sortBinaryTree (filter (x<) xs))
+{- -------------------------------------------------------- -}
+
+{- converts a binary tree into an ordered list -}
 convertBinaryToSortedList::(Ord a)=>(BinaryTree a)->[a]
 convertBinaryToSortedList Empty = []
 convertBinaryToSortedList (Node bt1 v bt2) = convertBinaryToSortedList bt1 ++ [v] ++ convertBinaryToSortedList bt2
