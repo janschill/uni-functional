@@ -1,10 +1,10 @@
 module FP02_5 where
 
-f_fib_number::Integer->Integer
-f_fib_number 0 = 0
-f_fib_number 1 = 1
-f_fib_number a = f_fib_number(a-1) + f_fib_number(a-2)
+fib::Integer->Integer
+fib 0 = 0
+fib 1 = 1
+fib n = fib (n-1) + (n-2)
 
-f_fib_list::Integer->[Integer]
-f_fib_list 0 = [0]
-f_fib_list a = [f_fib_number a] ++ f_fib_list (a-1)
+fibList::Integer->[Integer]
+fibList 0 = []
+fibList n = fibList (n-1) ++ [fib n]
